@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+    <script>
+        // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
+        'use strict'
+
+        let ano = parseInt(prompt('Informe um ano'))
+
+        if (ano  % 400 === 0 || (ano % 4 === 0 && ano % 100 !== 0)) {
+            alert('o ano informa é bissexto')
+        } else if (isNaN(ano)) {
+            alert('o ano informado é invalido')
+        } else {
+            alert('o ano informado não é bissexto')
+        }
+
+
+        
+        /*
+            Peça ao usuário para informar um ano e determine
+            se é bissexto pela regra:
+
+            1) Se o ano divide por 400 é bissexto; *OU*
+            2) se divide por 4 *E* não divide por 100, é bissexto
+
+            Alguns anos para testar:
+            1900: não é
+            1600: bissexto
+            1975: não é
+            1992: bissexto
+            2020: bissexto
+            2000: bissexto
+            2013: não é
+      */
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

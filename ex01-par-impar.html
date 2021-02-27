@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelo de documento HTML</title>
+    <title>par-impar</title>
     <script>
         // 'use strict' impede que variáveis sejam declaradas
         // sem o uso de let, var ou const
@@ -11,12 +11,21 @@
         // programação
         'use strict'
 
-        let numero = prompt('Informe um número:')
+        //parseInt(): tenta converter a entrada em numero valido
+        //e retorna NaN se nao conseguir
+        let numero = parseInt(prompt('Informe um número:'))
 
-        if (numero % a == 0) {
+        //testando se é realmente um numero
+        if(isNaN(numero)) { // conversão do parseInt() falhou
+            alert ('o valor informado não é um numero inteiro valido')
+        }
+
+        //verificando se o resto da divisao do numero por 2 deu 0
+
+        if (numero % 2 == 0) {
             alert('O numero escolhido é par')
         }
-           else if (numero % a == 1) {
+           else  {
                alert ('O numero escolhido é impar')
            }
 
