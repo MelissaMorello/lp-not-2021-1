@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagina modelo</title>
+    <script>
+        'use strict'
+         function kms () {
+             for(let km=400; km < 1; km--){
+             if (km % 50 === 0){ 
+                document.write(`No km ${km} há uma estação de embarque/desembarque. <br>`)
+            }  
+        }
+        }
+                let num
+          do {
+             num = parseInt(prompt('Informe um número para o quilômetro entre 1 e 400:'))
+        } while(isNaN(num) || num < 1 || num > 400)
+
+         switch(num) {
+            case 98:
+            case 198:
+            case 283:
+            case 379:
+                alert('Postos de conveniência da Rede Mil Grau')
+                break
+            case 155:
+            case 355:
+                alert('Postos da Polícia Ferroviária')
+                break
+            case 137:
+                alert('Aeroporto Interplanetário de Virapratos')
+                break
+            case 204:
+                alert('Hotel Cacique Internacional 6 estrelas.')
+                break
+            case 311:
+                alert('Boleli shopping center')
+                break
+            case 356:
+                alert('Acesso ao Acqua Park Unidade III')
+                break
+            default: 
+                alert('Nada neste Km.')
+        }
+
+        kms ()
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
