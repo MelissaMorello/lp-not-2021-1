@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagina modelo</title>
+
+</head>
+<body>
+    <h1>CALCULADORA DOM</h1>
+
+    <div>
+        <label for ="num1">Primeiro numero</label>
+        <input id="num1" type="number">
+    </div>
+
+    <div>
+        <label for="oper">Operação</label>
+        <select id="oper">
+            <option>(Selecione)</option>
+            <option>Soma (+)</option>
+            <option>Subtração (-)</option>
+            <option>Multiplicação (*)</option>
+            <option>Divisão (/)</option>
+        </select>
+    </div>
+
+     <div>
+        <label for ="num2">Segundo numero</label>
+        <input id="num2" type="number">
+    </div>
+
+    <div>
+        <button id="calcular">calcular</button>
+    </div>
+
+    <div id="resultado"></div>
+
+   <script>
+        // Ativa verificações adicionais de variáveis
+        // Modo"chato" do JavaScript
+        'use strict'
+
+        //1) capturar os elementos HTML
+        //2)declarar a função de validação do formulário
+        //3)declarar a função que faz o calculo, de acordo
+        //com a operaçõa escolhida pelo usuário.Dentro desta
+        //função, deve ser chamada a função de validação
+        //4)associar a função que faz o cálculo ao evento "click" do botão
+
+        const elnum1 = document.querySelector('#num1') 
+        const eloper = document.querySelector('#oper')
+        const elnum2 = document.querySelector('#num2')
+        const elcalcular = document.querySelector('#calcular')
+        const elresultado= document.querySelector('#resultado')
+
+        
+        function validar() {
+            // Retorna true caso todos os campos do formulário tiverem
+            // sido preenchidos corretamente, ou false, caso contrário
+            
+            if(elPrimeiroNome.value === '') {
+                alert('O primeiro nome deve ser preenchido.')
+                elPrimeiroNome.focus()  // Coloca o cursor no campo
+                return false    // Não passou na validação
+            }
+
+            if(elSobrenome.value === '') {
+                alert('O sobrenome deve ser preenchido.')
+                elSobrenome.focus()
+                return false
+            }
+
+            if(elFormaTratamento.selectedIndex === 0) {
+                alert('Selecione uma opção de forma de tratamento.')
+                elFormaTratamento.focus()
+                return false
+            }
+
+            let horaDia = parseInt(elHoraDia.value)
+            if(isNaN(horaDia) || horaDia < 0 || horaDia > 23) {
+                alert('Informe uma hora válida entre 0 e 23.')
+                elHoraDia.focus()
+                return false
+            }
+
+            if((! elAlert.checked) && (! elDocument.checked)) {
+                alert('Selecione pelo menos uma das opções de exibição.')
+                elAlert.focus()
+                return false
+            }
+
+            return true  // O formulário está válido
+        }
+
+
+
+
+
+    </script>
+
+  
+
+</body>
+</html>
