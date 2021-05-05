@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pagina modelo</title>
-
+    <title>Calculadora DOM</title>
+    
 </head>
 <body>
-    <h1>CALCULADORA DOM</h1>
+    <h1>Calculadora DOM</h1>
 
     <div>
-        <label for ="num1">Primeiro numero</label>
+        <label for="num1">Primeiro número</label>
         <input id="num1" type="number">
     </div>
 
@@ -25,81 +25,89 @@
         </select>
     </div>
 
-     <div>
-        <label for ="num2">Segundo numero</label>
+    <div>
+        <label for="num2">Segundo número</label>
         <input id="num2" type="number">
     </div>
 
     <div>
-        <button id="calcular">calcular</button>
+        <button id="calcular">Calcular</button>
     </div>
 
     <div id="resultado"></div>
 
-   <script>
+    <script>
         // Ativa verificações adicionais de variáveis
-        // Modo"chato" do JavaScript
+        // Modo "chato" do JavaScript
         'use strict'
 
-        //1) capturar os elementos HTML
-        //2)declarar a função de validação do formulário
-        //3)declarar a função que faz o calculo, de acordo
-        //com a operaçõa escolhida pelo usuário.Dentro desta
-        //função, deve ser chamada a função de validação
-        //4)associar a função que faz o cálculo ao evento "click" do botão
+        // 1) Capturar os elementos HTML
+        const elNum1 = document.getElementById('num1')
+        const elOper = document.getElementById('oper')
+        const elNum2 = document.getElementById('num2')
+        const elCalcular = document.querySelector('#calcular')
+        const elResultado = document.querySelector('#resultado')
 
-        const elnum1 = document.querySelector('#num1') 
-        const eloper = document.querySelector('#oper')
-        const elnum2 = document.querySelector('#num2')
-        const elcalcular = document.querySelector('#calcular')
-        const elresultado= document.querySelector('#resultado')
+        // Variáveis que conterão os valores a ser processados
+        let num1, num2
 
-        
+        // 2) Declarar a função de validação do formulário
         function validar() {
-            // Retorna true caso todos os campos do formulário tiverem
-            // sido preenchidos corretamente, ou false, caso contrário
-            
-            if(elPrimeiroNome.value === '') {
-                alert('O primeiro nome deve ser preenchido.')
-                elPrimeiroNome.focus()  // Coloca o cursor no campo
-                return false    // Não passou na validação
-            }
 
-            if(elSobrenome.value === '') {
-                alert('O sobrenome deve ser preenchido.')
-                elSobrenome.focus()
+            num1 = parseFloat(elNum1.value)
+            //num1 = Number(elNum1.value)
+            num2 = parseFloat(elNum2.value)
+
+            if(isNaN(num1)) {
+                alert('Informe o primeiro número.')
+                elNum1.focus()
                 return false
             }
 
-            if(elFormaTratamento.selectedIndex === 0) {
-                alert('Selecione uma opção de forma de tratamento.')
-                elFormaTratamento.focus()
+            if(elOper.selectedIndex === 0) {
+                alert('Selecione uma operação válida.')
+                elOper.focus()
+                return false   
+            }
+
+            if(isNaN(num2)) {
+                alert('Informe o segundo número.')
+                elNum2.focus()
                 return false
             }
 
-            let horaDia = parseInt(elHoraDia.value)
-            if(isNaN(horaDia) || horaDia < 0 || horaDia > 23) {
-                alert('Informe uma hora válida entre 0 e 23.')
-                elHoraDia.focus()
-                return false
-            }
+            return true
 
-            if((! elAlert.checked) && (! elDocument.checked)) {
-                alert('Selecione pelo menos uma das opções de exibição.')
-                elAlert.focus()
-                return false
-            }
-
-            return true  // O formulário está válido
         }
 
+        // 3) Declarar a função que faz o cálculo, de acordo
+        // com a operação escolhida pelo usuário. Dentro desta
+        // função, deve ser ser chamada a função de validação
+        function calcular() {
+            if(validar()) {
+                let resultado
+                switch(elOper.selectedIndex) {
+                    case 1:     // soma
+                        resultado = num1 + num2
+                        break
+                    case 2:     // subtração
+                        resultado = num1 - num2
+                        break
+                    case 3:     // multiplicação
+                        resultado = num1 * num2
+                        break
+                    default:    // divisão
+                        resultado = num1 / num2    
+                }
+                // Exibe o resultado na div resultado
+                elResultado.textContent = resultado
+            }
+        }
 
-
-
-
+        // 4) Associar a função que faz o cálculo ao evento
+        // 'click' do botão
+        elCalcular.addEventListener('click', calcular)
+        
     </script>
-
-  
-
 </body>
 </html>
